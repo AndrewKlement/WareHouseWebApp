@@ -1,0 +1,12 @@
+﻿.loginForm {
+    font-size: 18px;
+    justify-content: center;
+}
+
+.validation {
+    color: #dc3545;
+}
+
+.nav-link {
+    grid-column: span 2;
+}

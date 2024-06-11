@@ -1,0 +1,51 @@
+﻿@model MiniProject_IT_DIV.Models.UserAddViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+<h1>Register</h1>
+
+<form class="registerForm" id="registerForm" methode="post" asp-action="Register">
+    <div class="formInput">
+        <label for="exampleInputEmail1" class="form-label">Username</label>
+        <input type="text" required="required" class="form-control" placeholder="Username" id="inputUser" aria-label="Username" aria-describedby="basic-addon1" asp-for="Name">
+    </div>
+    <div class="formInput">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" required="required" class="form-control" placeholder="example@@email.com" id="inputEmail" aria-describedby="emailHelp" asp-for="Email">
+    </div>
+    <div class="formInput">
+        <label for="inputPassword" class="form-label">Password</label>
+        <input type="password" required="required" class="form-control" placeholder="ExaMple@@" id="inputPassword" asp-for="Password">
+    </div>
+    <div class="formInput">
+        <label for="inputConfirmPassword" class="form-label">Confirm password</label>
+        <input type="password" required="required" class="form-control" placeholder="ExaMple@@" id="inputConfirmPassword">
+    </div>
+    <button type="submit" class="auth-button">Submit</button>
+</form>
+
+<script asp-append-version="true">
+    document.getElementById("inputPassword").oninput = function () {
+        var pass = document.getElementById("inputPassword");
+        var pattern = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@@$ %^&*-]).{8,}$/;
+        
+        if (!pattern.test(pass.value)) {
+            pass.setCustomValidity("Invalid password format, needs to have at 8 character, one uppercase, one lowercase, one number, and one special character");
+        }
+        else {
+            pass.setCustomValidity("");
+        }
+    }
+
+    document.getElementById("inputConfirmPassword").oninput = function () {
+        var pass = document.getElementById("inputPassword");
+        var cnfrmPass = document.getElementById("inputConfirmPassword");
+
+        if (pass.value != cnfrmPass.value) {
+            cnfrmPass.setCustomValidity("Confirm password and pasword doesn't match !");
+        }
+        else {
+            cnfrmPass.setCustomValidity("");
+        }
+    }    
+</script>

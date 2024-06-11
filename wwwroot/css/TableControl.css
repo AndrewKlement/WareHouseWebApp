@@ -1,0 +1,33 @@
+﻿.table {
+    margin-top:45px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.table tr {
+    border-bottom: 1px solid lightgrey;
+}
+
+.table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.table th {
+    text-align: left;
+}
+
+.table th {
+    text-align: start;
+}
+
+.table th, .table td {
+    padding: 9px;
+}
+
+.table-action{
+    display:flex;
+}
+
+.table-action button{
+    margin-right:15px;
+}

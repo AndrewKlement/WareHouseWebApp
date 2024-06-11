@@ -1,0 +1,59 @@
+﻿@model MiniProject_IT_DIV.Models.CategoryModel
+
+
+<div class="modal-fade" id="editModal_@Model.Category_Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Category</h1>
+            <button type="button" class="btn btn-close" data-dismiss="modal" aria-label="Close">
+                <span class="material-symbols-outlined">
+                    close
+                </span>
+            </button>
+        </div>
+
+        <div class="modal-body formInput">
+            <label for="exampleInputEmail1" class="form-label">Category Name</label>
+            <input id="categoryId_@Model.Category_Id" type="hidden" value="@Model.Category_Id" asp-for="Category_Id">
+            <input id="categoryName_@Model.Category_Id" class="form-control" type="text" placeholder="" aria-label="default input example" asp-for="Category_Name">
+        </div>
+
+        <div class="modal-footer">
+            <button type="submit" class="submit-button" id="editButton_@Model.Category_Id" asp>Submit</button>
+        </div>
+    </div>
+</div>
+
+<script asp-append-version="true">
+    var editButton = document.getElementById("editButton_@Model.Category_Id")
+
+    editButton.addEventListener("click", onPut)
+
+    async function onPut() {
+        const currentURL = window.location.href;
+        const baseURL = currentURL.split('/Category/')[0];
+        const newURL = `${baseURL}/Category/EditModal`;
+        const name = document.getElementById("categoryName_@Model.Category_Id").value
+        const id = document.getElementById("categoryId_@Model.Category_Id").value
+
+        console.log(name)
+        console.log(id)
+
+        const formData = { "Category_Name": name, "Category_Id": id };
+
+        console.log(newURL)
+
+        await fetch(newURL, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+        }).then(
+            window.location.reload()
+        )
+        .catch((error) => {
+            console.error("Fetch error:", error);
+        })
+    }
+</script>

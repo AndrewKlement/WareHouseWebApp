@@ -1,0 +1,61 @@
+﻿@model MiniProject_IT_DIV.Models.CategoryModel
+
+<div class="modal-fade" id="deleteModal_@Model.Category_Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Category</h1>
+            <button type="button" class="btn btn-close" data-dismiss="modal" aria-label="Close">
+                <span class="material-symbols-outlined">
+                    close
+                </span>
+            </button>
+        </div>
+
+        <div class="modal-body">
+            <h2>
+                This action is irreversible! Are you sure you want to delete this
+                category?
+            </h2>
+            <input type="hidden" id="deleteId_@Model.Category_Id" asp-for="Category_Id" value="@Model.Category_Id">
+            <input type="hidden" id="deleteName_@Model.Category_Id" asp-for="Category_Name" value="@Model.Category_Name">
+        </div>
+        
+        <div class="modal-footer">
+            <button type="button" id="deleteButton_@Model.Category_Id" class="delete-button" data-bs-toggle="modal">Delete</button>
+        </div>
+    </div>
+</div>
+
+<script asp-append-version="true">
+    var editButton = document.getElementById("deleteButton_@Model.Category_Id")
+
+    editButton.addEventListener("click", onDelete)
+
+    async function onDelete() {
+        const currentURL = window.location.href;
+        const baseURL = currentURL.split('/Category/')[0];
+        const newURL = `${baseURL}/Category/DeleteModal`;
+        const name = document.getElementById("deleteName_@Model.Category_Id").value
+        const id = document.getElementById("deleteId_@Model.Category_Id").value
+
+        console.log(name)
+        console.log(id)
+
+        const formData = { "Category_Name": name, "Category_Id": id };
+
+        console.log(newURL)
+
+        await fetch(newURL, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+        }).then(
+            window.location.reload()
+        )
+        .catch((error) => {
+            console.error("Fetch error:", error);
+        })
+    }
+</script>

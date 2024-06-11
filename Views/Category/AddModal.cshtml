@@ -1,0 +1,24 @@
+﻿@model MiniProject_IT_DIV.Models.CategoryModel
+
+<div class="modal-fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title" id="exampleModalLabel">Add Category</h1>
+            <button type="button" class="btn btn-close" data-dismiss="modal" aria-label="Close">
+                <span class="material-symbols-outlined">
+                    close
+                </span>
+            </button>
+        </div>
+        <form class="row g-3" methode="post" asp-action="AddModal">
+            <div class="modal-body formInput">
+                <label for="exampleInputEmail1" class="form-label">Category Name</label>
+                <input class="form-control" type="text" placeholder="" aria-label="default input example" asp-for="Category_Name">
+            </div>
+
+            <div class="modal-footer">
+                <button type="submit" class="submit-button">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

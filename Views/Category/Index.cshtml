@@ -1,0 +1,45 @@
+﻿@model MiniProject_IT_DIV.Models.CategoryViewModel
+
+@{
+    ViewData["Title"] = "Category";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+
+<vc:CategoryPartialController></vc:CategoryPartialController>
+
+<h1 class="display-4">Product Categories</h1>
+
+<button type="button" class="btn auth-button" data-toggle="modal" data-target="addModal">
+    Add Category
+</button>
+
+<table class="table">
+    <thread>
+        <tr>
+            <th>No.</th>
+            <th>Category</th>
+            <th>Action</th>
+        </tr>
+    </thread>
+    <tbody>
+        @{
+            int cnt = 1;
+        }
+        @foreach (var category in Model.ListCategories.Category)
+        {
+            <tr>
+                <td>@cnt</td>
+                <td>@category.Category_Name</td>
+                <td class="table-action">
+                    <button type="button" class="btn submit-button" data-toggle="modal" data-target="editModal_@category.Category_Id" >Edit</button>
+                    @await Component.InvokeAsync("EditCategoryComponent", category)
+                    <button type="button" class="btn delete-button" data-toggle="modal" data-target="deleteModal_@category.Category_Id">Delete</button>
+                    @await Component.InvokeAsync("DeleteCategoryComponent", category)
+                </td>
+            </tr>
+            cnt++;
+        }
+    </tbody>
+</table>
+
+@Html.Partial("AddModal", Model.AddCategory)

@@ -1,0 +1,83 @@
+﻿.formInput {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    gap: 15px;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.form-control {
+    border-radius: 5px;
+    border: 1px solid grey;
+    padding: 6px;
+}
+
+.form-control:focus {
+    outline: none !important;
+}
+
+.form-check {
+    padding-top: 20px;
+}
+
+.auth-button {
+    display: flex;
+    margin-top: 35px;
+    font-family: 'Poppins';
+    font-size: 15px;
+    background: #0055ff;
+    color: white;
+    border-radius: 7px;
+    border: 0px;
+    padding: 8px;
+}
+
+.auth-button:focus {
+    box-shadow: 0 0 0 5px rgba(0, 85, 255, 0.5)
+}
+
+.submit-button {
+    display: flex;
+    margin-top: 15px;
+    margin-bottom:15px;
+    font-family: 'Poppins';
+    font-size: 15px;
+    background: #28a745;
+    color: white;
+    border-radius: 7px;
+    border: 0px;
+    padding: 8px;
+}
+
+.submit-button:focus {
+    box-shadow: 0 0 0 5px rgba(40, 167, 69, 0.5)
+}
+
+.delete-button {
+    display: flex;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-family: 'Poppins';
+    font-size: 15px;
+    background: #dc3545;
+    color: white;
+    border-radius: 7px;
+    border: 0px;
+    padding: 8px;
+}
+
+.delete-button:focus {
+    box-shadow: 0 0 0 5px rgba(220, 53, 69, 0.5)
+}
+
+.btn-close {
+    margin-left: auto;
+    background: none;
+    color: inherit;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    float: right;
+    padding: 20px;
+}

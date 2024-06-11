@@ -1,0 +1,30 @@
+﻿@model MiniProject_IT_DIV.Models.UserLoginViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>Login</h1>
+
+<form class="loginForm" methode="post" asp-action="Login">
+    <div class="formInput emailInpt">
+        <label for="inputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="inputEmail1" aria-describedby="emailHelp" asp-for="Email">
+    </div>
+    <div class="formInput passInpt">
+        <label for="inputPassword" class="form-label">Password</label>
+        <input type="password" class="form-control" id="inputPassword" asp-for="Password">
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" asp-for="KeepLoggedIn">
+        <label class="form-check-label" for="flexCheckDefault">
+            Keep logged in
+        </label>
+    </div>
+
+    <p class="validation">@ViewData["ValidateMessage"]</p>
+    
+    <a class="nav-link formInput" asp-area="" asp-controller="Auth" asp-action="Register">Haven't register, click here !</a>
+    
+    <button type="submit" class="auth-button formInput">Submit</button>
+</form>
+
